@@ -1,3 +1,4 @@
+
 const id=document.querySelector("#id");
 const psword=document.querySelector("#psword");
 const loginBtn=document.querySelector("button");
@@ -17,6 +18,15 @@ function login(){
         },
         body: JSON.stringify(req),
     }).then((res)=>res.json())
-      .then((res)=>console.log(res));
-    //console.log("AA");
+      .then((res)=>{
+         if(res.success){
+             location.href="/";
+         } 
+         else{
+             alert("login failed");
+         }
+      })
+      .catch((err)=>{
+          console.log("로그인 중 에러발생");
+      });
 };
